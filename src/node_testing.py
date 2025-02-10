@@ -1,9 +1,6 @@
-from textnode import TextNode
-from htmlnode import HTMLNode
-from htmlnode import LeafNode
-from htmlnode import ParentNode
+from htmlnode import LeafNode, ParentNode
 
-def main(): 
+def main(): # This file is being used to show how various nodes to_html() methods would be visualized
     BoldNode = LeafNode('b', 'This text would be BOLD')
     ItalicNode = LeafNode('i', 'This text would probably be italicized')
     NormalNode = LeafNode(None, 'This node is boring...')
