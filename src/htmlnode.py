@@ -47,11 +47,23 @@ class LeafNode(HTMLNode):
 class ParentNode(HTMLNode):
     def __init__(self, tag, children, props=None):
         super().__init__(tag, None, children, props)
+    
+    def props_to_html(self):
+        return super().props_to_html()
+    
+    def __repr__(self):
+        return super().__repr__()
+    
+    def __eq__(self, other):
+        return super().__eq__(other)
 
     def to_html(self):
+        if self.children == None or len(self.children) == 0:
+            raise ValueError("Parent Node lacks child nodes")
+        self.childlist = list(map(lambda x: x.to_html(), self.children))
         if self.tag == None:
             raise ValueError("Parent Node lacks a tag")
-        elif len(self.children) == None:
-            raise ValueError("Parent Node lacks child nodes")
+        elif self.props == None:
+            return f'<{self.tag}>{"".join(self.childlist)}</{self.tag}>'
         else:
-            return f'<{self.tag}>{"".join(list(map(lambda x: x.to_html(), self.children)))}</{self.tag}>'
+            return f'<{self.tag}{self.props_to_html()}>{"".join(self.childlist)}</{self.tag}>'
