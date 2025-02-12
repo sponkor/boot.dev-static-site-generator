@@ -10,7 +10,7 @@ class HTMLNode(): # Parent class for HTMLNodes
         properties, propertystring = list(self.props.items()), []
         for item in properties:
             propertystring.append(f' {item[0]}="{item[1]}"')
-        return ",".join(propertystring)
+        return "".join(propertystring)
     
     def __repr__(self):
         return f'HTMLNode({self.tag}, {self.value}, {self.children}, {self.props})'
@@ -67,3 +67,4 @@ class ParentNode(HTMLNode):
             return f'<{self.tag}>{"".join(self.childlist)}</{self.tag}>'
         else:
             return f'<{self.tag}{self.props_to_html()}>{"".join(self.childlist)}</{self.tag}>'
+        

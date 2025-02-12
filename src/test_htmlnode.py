@@ -17,7 +17,7 @@ class TestHTMLNode(unittest.TestCase):
 
     def test_props2html(self): # Tests if the props_to_html method works properly
         node = HTMLNode(None,None,None,{'Key': 'Value', 'Key2': 'Value2'})
-        if node.props_to_html() != ' Key="Value", Key2="Value2"':
+        if node.props_to_html() != ' Key="Value" Key2="Value2"':
             raise Exception(".props_to_html method printed incorrectly")
         else: return None
     
